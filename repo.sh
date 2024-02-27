@@ -12,8 +12,8 @@ if [ -z "$REPO_NAME" ]; then
 fi
 
 # Create project directory
-mkdir "/home/chrisvasa/dev/$REPO_NAME"
-cd "/home/chrisvasa/dev/$REPO_NAME" || exit
+mkdir "/home/user/dev/$REPO_NAME"
+cd "/home/user/dev/$REPO_NAME" || exit
 
 # Initialize git and create basic files
 git init
