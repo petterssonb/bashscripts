@@ -56,8 +56,8 @@ fi
 
 # Create project directory
 if [ -z "$REPO_NAME" ]; then
-  mkdir "home/user/dev/$REPO_NAME"
-  cd "home/user/dev/$REPO_NAME" || exit
+  mkdir "/home/user/dev/$REPO_NAME"
+  cd "/home/user/dev/$REPO_NAME" || exit
 else
   mkdir "$REPO_DIR/$REPO_NAME" 
   cd "$REPO_DIR/$REPO_NAME" || exit
