@@ -81,7 +81,7 @@ cd "$REPO_DIR/$REPO_NAME" || exit
 git init
 git checkout -b main
 echo "# $REPO_NAME" > README.md
-echo ".git/\nout/\ncompile_commands.json" > .gitignore
+echo -e ".cache/\nout/\ncompile_commands.json" > .gitignore
 
 # Add and commit changes
 git add .
