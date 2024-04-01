@@ -7,9 +7,6 @@ REPO_DIR="$2"
 REPO_PRIVATE="TRUE"
 REPO_SECRET=""
 
-echo $GITHUB_USERNAME
-echo $GITHUB_TOKEN
-
 # Check if username and token is set in .bashrc || .bash_profile || .zshrc
 if [ -z "$GITHUB_USERNAME" ] || [ -z "$GITHUB_TOKEN" ]; then
   echo "Please set USERNAME and TOKEN in environment variables."
