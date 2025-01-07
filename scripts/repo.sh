@@ -6,6 +6,7 @@ REPO_NAME="$1"
 REPO_DIR="$2"
 REPO_PRIVATE="TRUE"
 REPO_SECRET=""
+GITIGNORE_TEMPLATE_PATH="${GITIGNORE_TEMPLATE_PATH:-~/.gitignore_template}"
 
 # Check if username and token is set in .bashrc || .bash_profile || .zshrc
 if [ -z "$GITHUB_USERNAME" ] || [ -z "$GITHUB_TOKEN" ]; then
@@ -25,13 +26,13 @@ fi
 # Add key to ssh-agent
 ssh-add ~/.ssh/id_ed25519/github
 
-# Check that jq, curl and git are installed
+# Check that jq, curl, and git are installed
 command -v jq >/dev/null 2>&1 || { echo >&2 "Requires jq to be installed, aborting."; exit 1;}
 command -v curl >/dev/null 2>&1 || { echo >&2 "Requires curl to be installed, aborting."; exit 1;}
 command -v git >/dev/null 2>&1 || { echo >&2 "Requires git to be installed, aborting."; exit 1;}
 command -v pwd >/dev/null 2>&1 || { echo >&2 "Requires pwd to be installed, aborting."; exit 1;}
 
-#Ask for public/private repo
+# Ask for public/private repo
 while true; do
   read -p "Private repo? (y/n) " private 
   case $private in
@@ -71,7 +72,7 @@ while true; do
   esac
 done
 
-# If no dir provided use where its run from
+# If no dir provided use where it's run from
 if [ -z "$REPO_DIR" ]; then
   REPO_DIR=$(pwd)
 fi
@@ -84,7 +85,13 @@ cd "$REPO_DIR/$REPO_NAME" || exit
 git init
 git checkout -b main
 echo "# $REPO_NAME" > README.md
-echo -e ".cache/\nout/\ncompile_commands.json" > .gitignore
+
+# Use custom .gitignore if it exists, otherwise create a default one
+if [ -f "$GITIGNORE_TEMPLATE_PATH" ]; then
+  cp "$GITIGNORE_TEMPLATE_PATH" .gitignore
+else
+  echo -e ".cache/\nout/\ncompile_commands.json" > .gitignore
+fi
 
 # Add and commit changes
 git add .
