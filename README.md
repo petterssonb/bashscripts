@@ -25,7 +25,7 @@ Ensure the following are installed on your system:
 Download the script to your desired directory.
 
 ### 2. Add Environment Variables to `.zshrc` (or `.bashrc`)
-Add your GitHub credentials and the path to your custom `.gitignore_template` file to your `.zshrc` file:
+Add your ***GitHub credentials*** and the path to your custom `.gitignore_template` file to your `.zshrc` file:
 
 ```bash
 export GITHUB_USERNAME="your_github_username"
@@ -37,6 +37,10 @@ export GITIGNORE_TEMPLATE_PATH="/path/to/your/gitignore_template"
  - your_github_username with your GitHub username.
  - your_github_token with a GitHub personal access token with repo permissions.
  - /path/to/your/gitignore_template with the absolute path to your .gitignore_template file.
+
+ ***There is a template file witihin the 'templates' directory of the repo, use that or change the file to your liking***
+ 
+ ***For example /path/to/your/bashscripts/templates/gitignore_template***
 
 ***Save the file and apply the changes:***
 
